@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
 ///////////////////////////////////////
@@ -587,3 +587,12 @@ console.log(calcAverage([2, 3, 7]));
 console.log(calcAverage(totals));
 console.log(calcAverage(tips));
 */
+const printForcast = function (temp) {
+  let str = "";
+  for (let i = 0; i < temp.length; i++) {
+    str = str + `... ${temp[i]}°C in ${i + 1} days `;
+  }
+  return str;
+};
+const forcast = printForcast([17, 21, 23]);
+console.log(forcast);
