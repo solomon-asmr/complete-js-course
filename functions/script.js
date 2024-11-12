@@ -52,7 +52,7 @@ greatWithArrow('good evening')('solomon');
 */
 /////////////////////////////////////////
 //the call and apply method
-const beersheva = {
+/*const beersheva = {
   name: 'beersheva',
   iataCode: 'BSIL',
   bookings: [],
@@ -83,3 +83,27 @@ console.log(telaviv);
 
 book.call(telaviv, ...flightDetail);
 console.log(telaviv);
+*/
+const poll = {
+  question: 'what is your favourite programming language?',
+  options: ['0: Javascript', '1: python', '2:Rust', '3: c++'],
+  registerNewAnswer() {
+    const choose = Number(
+      prompt(
+        `${this.question} \n ${this.options.join('\n')}\n (choose your answer)`
+      )
+    );
+    typeof choose === 'number' &&
+      choose < this.options.length &&
+      this.answers[choose]++;
+    console.log(this.answers);
+  },
+  // displayResults() {
+  //   console.log(this.answers);
+  // },
+  answers: new Array(4).fill(0),
+};
+//const register = poll.registerNewAnswer;
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
