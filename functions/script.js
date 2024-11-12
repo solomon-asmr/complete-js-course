@@ -37,8 +37,9 @@ const str = 'solomon is the most intellegent student in computer science';
 transformer(str, upperFirstWord);
 transformer(str, oneWord);
 */
+/////////////////////////////////////////
 //functions returning functions
-const greet = function (greating) {
+/*const greet = function (greating) {
   return function (name) {
     console.log(`${greating} ${name}`);
   };
@@ -48,3 +49,37 @@ greatings('solomon');
 greet('Good afternoon')('solomon');
 const greatWithArrow = greating => name => console.log(`${greating} ${name}`);
 greatWithArrow('good evening')('solomon');
+*/
+/////////////////////////////////////////
+//the call and apply method
+const beersheva = {
+  name: 'beersheva',
+  iataCode: 'BSIL',
+  bookings: [],
+  book(fullName, flightNum) {
+    console.log(
+      `${fullName} booked a flight on ${this.name} flight ${this.iataCode} ${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode} ${flightNum}`, fullName });
+  },
+};
+beersheva.book('sheldon cooper', 676);
+console.log(beersheva);
+
+const telaviv = {
+  name: 'telaviv',
+  iataCode: 'TAIL',
+  bookings: [],
+};
+const book = beersheva.book;
+
+book.call(telaviv, 'solomon kassahun', 606);
+console.log(telaviv);
+
+//apply method
+const flightDetail = ['Gizachew kassahun', 879];
+book.apply(telaviv, flightDetail);
+console.log(telaviv);
+
+book.call(telaviv, ...flightDetail);
+console.log(telaviv);
